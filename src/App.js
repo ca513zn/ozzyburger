@@ -10,6 +10,7 @@ function App() {
       <header
         style={{
           backgroundColor: "white",
+          width: "100%",
         }}
       >
         <div
