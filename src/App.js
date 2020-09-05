@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import "fontsource-roboto";
+import TabPanel from "./Tabs";
+import Typography from "@material-ui/core/Typography";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <header
+        style={{
+          backgroundColor: "white",
+        }}
+      >
+        <div
+          style={{
+            padding: "4px 4px 2px 4px",
+          }}
         >
-          Learn React
-        </a>
+          <Typography variant="h5">Ozzys burgers</Typography>
+        </div>
       </header>
+      <TabPanel />
     </div>
   );
 }
