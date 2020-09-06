@@ -17,10 +17,12 @@ import IconButton from "@material-ui/core/IconButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MarqueeText from "./MarqueeText";
 
-const themeColor1 = "black";
+const themeColor1 = "white";
 
 const StyledTabs = withStyles({
-  root: {},
+  root: {
+    backgroundColor: "black",
+  },
   indicator: {
     backgroundColor: themeColor1,
     height: "4px",
@@ -96,11 +98,17 @@ export default function FullWidthTabs() {
           aria-label="Ozzy's menu"
         >
           <Tab
-            label={<FastfoodIcon style={{ fill: "black" }} />}
+            label={<FastfoodIcon style={{ fill: "white" }} />}
             {...a11yProps(0)}
           />
-          <Tab label={<TodayIcon />} {...a11yProps(1)} />
-          <Tab label={<ShoppingCartIcon />} {...a11yProps(2)} />
+          <Tab
+            label={<TodayIcon style={{ fill: "white" }} />}
+            {...a11yProps(1)}
+          />
+          <Tab
+            label={<ShoppingCartIcon style={{ fill: "white" }} />}
+            {...a11yProps(2)}
+          />
         </StyledTabs>
       </AppBar>
       <SwipeableViews
