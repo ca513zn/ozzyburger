@@ -350,7 +350,7 @@ export default function FullWidthTabs() {
                             display: "flex",
                             flexDirection: "row-reverse",
                           }}
-                          onClick={() => handleAddItem(item)}
+                          onClick={() => handleAddItem(foodItem)}
                         >
                           <StyledButton />
                         </div>

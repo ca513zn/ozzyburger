@@ -16,7 +16,7 @@ function App() {
           }}
         >
           <h3 style={{ color: "white", fontFamily: "'Fredoka One', cursive", letterSpacing: "2px" }}>
-            Thank you for choosing Ozzy's burgers.
+            Thank you for choosing <br /> Ozzy's Burgers 🍔
           </h3>
           <a
             href="https://www.carlosznava.com"
