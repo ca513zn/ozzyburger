@@ -140,14 +140,39 @@ export default function FullWidthTabs() {
                 fontStyle: "italic",
               }}
             >
-              Est. 2020
+              Est. 2020, Cancún, Mx.
+            </div>
+            <div
+              style={{
+                marginTop: "12px",
+                marginBottom: "-12px",
+              }}
+            >
+              Send us a message, click this link:
             </div>
             <div
               style={{
                 margin: "16px 0",
+                display: "flex",
+                justifyContent: "center",
               }}
             >
-              <h3>Tel: 984 269 0027, Cancún, Mx.</h3>
+              <img
+                src="https://upload-icon.s3.us-east-2.amazonaws.com/uploads/icons/png/19979306911530099344-512.png"
+                style={{
+                  width: "24px",
+                  height: "24px",
+                  marginRight: "8px",
+                }}
+              />
+              <h3>
+                <a
+                  style={{ color: "limegreen" }}
+                  href="https://wa.me/529842690027?text=Hello%20Ozzy!%20I%20would%20like%20to%20place%20an%20order."
+                >
+                  984 269 0027
+                </a>
+              </h3>
             </div>
           </header>
           <div
