@@ -177,6 +177,8 @@ export default function FullWidthTabs() {
               items: [
                 {
                   name: "Classic Ozz",
+                  image:
+                    "https://i2.wp.com/www.foodrepublic.com/wp-content/uploads/2012/03/033_FR11785.jpg?fit=978%2C650&ssl=1",
                   price: 25,
                   description: ` 300 g. Spiced Ground Beef, Spicy Creamy Mayo, Crispy
                   Cold Lettuce, Toasted Sesame Seed Bun, Fresh Tomatoes,
@@ -184,6 +186,8 @@ export default function FullWidthTabs() {
                 },
                 {
                   name: "Meat Monster",
+                  image:
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSzzrf_uOH16vft92SU0NPeVwTEM1QbyUwYSg&usqp=CAU",
                   price: 45,
                   description: ` 450 g. Spiced Ground Beef, Spicy Creamy Mayo, Crispy
                   Cold Lettuce, Toasted Sesame Seed Bun, Fresh Tomatoes,
@@ -196,11 +200,15 @@ export default function FullWidthTabs() {
               items: [
                 {
                   name: "Strawberry Banana",
+                  image:
+                    "https://www.evolvingtable.com/wp-content/uploads/2019/05/Strawberry-Banana-Smoothie-8.jpg",
                   price: 20,
                   description: `Fresh Strawberries, Fresh Bananas, Served Ice Cold, with a side of Vanilla Wafers`,
                 },
                 {
                   name: "Chocolate Dream",
+                  image:
+                    "https://keto-mojo.com/wp-content/uploads/2020/05/Keto-Chocolate-Milkshake-500x500.jpg",
                   price: 20,
                   description: `Premium Chocolate, Served Ice Cold with a side of Vanilla Wafers`,
                 },
@@ -211,11 +219,15 @@ export default function FullWidthTabs() {
               items: [
                 {
                   name: "Spaghetti and Meatballs",
+                  image:
+                    "https://i2.wp.com/myemeraldkitchen.com/wp-content/uploads/2014/06/P1050187_ekl-1.jpg?ssl=1",
                   price: 55,
                   description: `Steamy Hot Noodles, Served with Delicious thick meaty Tomato Sauce, Blended with a special mix of spices, Served with 3 Spicy Beef Meatballs`,
                 },
                 {
                   name: "Chicken Alfredo",
+                  image:
+                    "https://assets.kraftwhatscooking.ca/adaptivemedia/rendition/207492_3000x2000.jpg?id=cc88e859ce771d1ed03c01d1ec057fab5abd525c&ht=250&wd=375&clid=KRCA",
                   price: 60,
                   description: `Rich and Creamy Alfredo Sauce, Spiced with a mix of special spices, served with a juicy grilled chicken breast`,
                 },
@@ -247,36 +259,56 @@ export default function FullWidthTabs() {
                 </div>
               </div>
 
-              <Collapse
-                in={currentCollapsed.includes(item.category)}
-                style={{
-                  padding: "0 16px",
-                }}
-              >
+              <Collapse in={currentCollapsed.includes(item.category)}>
                 {item.items.map((foodItem) => (
-                  <div key={foodItem.name}>
-                    <Box
+                  <>
+                    <div
                       style={{
                         display: "flex",
+                        alignItems: "center",
                         justifyContent: "space-between",
+                        width: "100%",
                       }}
                     >
-                      <Typography variant="h5">{foodItem.name}</Typography>
-                      <Typography variant="h5">
-                        ${foodItem.price.toString()}
-                      </Typography>
-                    </Box>
-                    <Box mb={1}>
-                      <p
+                      <img
+                        src={foodItem.image}
+                        alt="img"
                         style={{
-                          fontSize: "10px",
+                          width: "80px",
+                          borderRadius: "10%",
+                          margin: "8px",
+                        }}
+                      />
+                      <div
+                        key={foodItem.name}
+                        style={{
+                          margin: "0 8px",
                         }}
                       >
-                        {foodItem.description}
-                      </p>
-                    </Box>
+                        <Box
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                          }}
+                        >
+                          <Typography variant="h5">{foodItem.name}</Typography>
+                          <Typography variant="h5">
+                            ${foodItem.price.toString()}
+                          </Typography>
+                        </Box>
+                        <Box mb={1}>
+                          <p
+                            style={{
+                              fontSize: "10px",
+                            }}
+                          >
+                            {foodItem.description}
+                          </p>
+                        </Box>
+                      </div>
+                    </div>
                     <Divider />
-                  </div>
+                  </>
                 ))}
               </Collapse>
               <Divider />
