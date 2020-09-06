@@ -16,6 +16,7 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import IconButton from "@material-ui/core/IconButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MarqueeText from "./MarqueeText";
+import CalendarTab from "./CalendarTab";
 
 const themeColor1 = "white";
 
@@ -385,7 +386,7 @@ export default function FullWidthTabs() {
           ))}
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          Offers day by day
+          <CalendarTab />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
           Contact information
