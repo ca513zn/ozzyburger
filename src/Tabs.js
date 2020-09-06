@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -10,6 +10,9 @@ import FastfoodIcon from "@material-ui/icons/Fastfood";
 import TodayIcon from "@material-ui/icons/Today";
 import CallIcon from "@material-ui/icons/Call";
 import Collapse from "@material-ui/core/Collapse";
+import IconButton from "@material-ui/core/IconButton";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
 import MarqueeText from "./MarqueeText";
 
 function TabPanel(props) {
@@ -23,7 +26,7 @@ function TabPanel(props) {
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
-      {value === index && <Box p={3}>{children}</Box>}
+      {value === index && <Box>{children}</Box>}
     </div>
   );
 }
@@ -53,6 +56,8 @@ export default function FullWidthTabs() {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+
+  const [currentCollapse, setCurrentCollapse] = useState(null);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -90,6 +95,7 @@ export default function FullWidthTabs() {
               backgroundColor: "white",
               width: "100%",
               textAlign: "center",
+              marginTop: "16px",
             }}
           >
             <h1
@@ -104,7 +110,10 @@ export default function FullWidthTabs() {
           </header>
           <div
             style={{
-              textAlign: "center",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
             }}
           >
             <div
@@ -124,10 +133,11 @@ export default function FullWidthTabs() {
             </div>
             <div
               style={{
-                width: "350px",
-                borderRadius: "20px",
+                width: "100%",
+                maxWidth: "550px",
                 overflow: "hidden",
-                textAlign: "center",
+                display: "flex",
+                justifyContent: "center",
               }}
             >
               <img
@@ -146,11 +156,16 @@ export default function FullWidthTabs() {
               display: "flex",
               backgroundColor: "pink",
               justifyContent: "space-between",
+              alignItems: "center",
               padding: "0 24px",
             }}
           >
             <div>Burgers</div>
-            <div>Button</div>
+            <div>
+              <IconButton aria-label="burgers">
+                <ExpandMoreIcon />
+              </IconButton>
+            </div>
           </div>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
