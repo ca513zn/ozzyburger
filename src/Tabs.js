@@ -22,7 +22,7 @@ const themeColor1 = "white";
 
 const StyledTabs = withStyles({
   root: {
-    backgroundColor: "black",
+    backgroundColor: "#2d180f",
   },
   indicator: {
     backgroundColor: themeColor1,
@@ -60,11 +60,7 @@ function a11yProps(index) {
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: "black",
-    width: "100%",
-    height: "100%",
-  },
+  root: {},
 }));
 
 export default function FullWidthTabs() {
@@ -138,6 +134,7 @@ export default function FullWidthTabs() {
               style={{
                 marginTop: "-4px",
                 fontStyle: "italic",
+                fontSize: "12px",
               }}
             >
               Est. 2020, Cancún, Mx.
@@ -146,9 +143,10 @@ export default function FullWidthTabs() {
               style={{
                 marginTop: "12px",
                 marginBottom: "-12px",
+                fontSize: "14px",
               }}
             >
-              Send us a message, click this link:
+              Order now, click this link:
             </div>
             <div
               style={{
@@ -165,14 +163,14 @@ export default function FullWidthTabs() {
                   marginRight: "8px",
                 }}
               />
-              <h3>
+              <h2>
                 <a
-                  style={{ color: "limegreen" }}
+                  style={{ color: "limegreen", textDecoration: "none" }}
                   href="https://wa.me/529842690027?text=Hello%20Ozzy!%20I%20would%20like%20to%20place%20an%20order."
                 >
                   984 269 0027
                 </a>
-              </h3>
+              </h2>
             </div>
           </header>
           <div
@@ -187,18 +185,7 @@ export default function FullWidthTabs() {
               style={{
                 margin: "8px 0",
               }}
-            >
-              {/* <MarqueeText
-                list={[
-                  "Welcome! May we take your order?",
-                  "Try one of our new drinks: Coconut passion. (Coconut + PassionFruit)",
-                  "The winner of last week's burger promo was: JUAN123. Congratulations!",
-                  "Why aren’t burgers too good at basketball? Too many turnovers!",
-                ].concat("Thank you for choosing Ozzy's Burgers!")}
-                variant="h5"
-                marquee={true}
-              /> */}
-            </div>
+            ></div>
             <div
               style={{
                 width: "100%",
