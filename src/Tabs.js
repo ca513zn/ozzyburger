@@ -163,13 +163,23 @@ export default function FullWidthTabs() {
           <div
             style={{
               display: "flex",
+              justifyContent: "center",
+              padding: "8px 0",
+              borderBottom: "5px solid gray"
+            }}
+          >
+            <Typography variant="h4">{"Our Menu 🍽"}</Typography>
+          </div>
+          <div
+            style={{
+              display: "flex",
               backgroundColor: "lightgrey",
               justifyContent: "space-between",
               alignItems: "center",
               padding: "0 24px",
             }}
           >
-            <div>Burgers</div>
+            <Typography variant="h5">{"Burgers 🍔"}</Typography>
             <div>
               <IconButton
                 onClick={() => handleCollapseChange("burger")}
@@ -199,9 +209,11 @@ export default function FullWidthTabs() {
               <Typography variant="h5">$25</Typography>
             </Box>
             <Box mb={1}>
-              <p style={{
-                fontSize:"10px"
-              }}>
+              <p
+                style={{
+                  fontSize: "10px",
+                }}
+              >
                 300 g. Spiced Ground Beef, Spicy Creamy Mayo, Crispy Cold
                 Lettuce, Toasted Sesame Seed Bun, Fresh Tomatoes, Crispy Onions
               </p>
