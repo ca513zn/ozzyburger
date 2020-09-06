@@ -60,16 +60,16 @@ export default function FullWidthTabs() {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
-  const [currentCollapse, setCurrentCollapse] = useState(null);
+  const [currentCollapsed, setCurrentCollapsed] = useState([]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const handleCollapseChange = (tab) => {
-    tab === currentCollapse
-      ? setCurrentCollapse(null)
-      : setCurrentCollapse(tab);
+    currentCollapsed.includes(tab)
+      ? setCurrentCollapsed(currentCollapsed.filter((i) => i !== tab))
+      : setCurrentCollapsed(currentCollapsed.concat(tab));
   };
 
   const handleChangeIndex = (index) => {
@@ -135,6 +135,7 @@ export default function FullWidthTabs() {
                   "Welcome! May we take your order?",
                   "Try one of our new drinks: Coconut passion. (Coconut + PassionFruit)",
                   "The winner of last week's burger promo was: JUAN123. Congratulations!",
+                  "Why aren’t burgers too good at basketball? Too many turnovers!",
                 ].concat("Thank you for choosing Ozzy's Burgers!")}
                 variant="h5"
                 marquee={true}
@@ -165,61 +166,122 @@ export default function FullWidthTabs() {
               display: "flex",
               justifyContent: "center",
               padding: "8px 0",
-              borderBottom: "5px solid gray"
+              borderBottom: "4px solid gray",
             }}
           >
             <Typography variant="h4">{"Our Menu 🍽"}</Typography>
           </div>
-          <div
-            style={{
-              display: "flex",
-              backgroundColor: "lightgrey",
-              justifyContent: "space-between",
-              alignItems: "center",
-              padding: "0 24px",
-            }}
-          >
-            <Typography variant="h5">{"Burgers 🍔"}</Typography>
-            <div>
-              <IconButton
-                onClick={() => handleCollapseChange("burger")}
-                aria-label="burgers"
-              >
-                {currentCollapse === "burger" ? (
-                  <ExpandLessIcon />
-                ) : (
-                  <ExpandMoreIcon />
-                )}
-              </IconButton>
-            </div>
-          </div>
-          <Collapse
-            in={currentCollapse === "burger"}
-            style={{
-              padding: "0 16px",
-            }}
-          >
-            <Box
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <Typography variant="h5">Classic Ozz</Typography>
-              <Typography variant="h5">$25</Typography>
-            </Box>
-            <Box mb={1}>
-              <p
+          {[
+            {
+              category: "Burgers 🍔",
+              items: [
+                {
+                  name: "Classic Ozz",
+                  price: 25,
+                  description: ` 300 g. Spiced Ground Beef, Spicy Creamy Mayo, Crispy
+                  Cold Lettuce, Toasted Sesame Seed Bun, Fresh Tomatoes,
+                  Crispy Onions`,
+                },
+                {
+                  name: "Meat Monster",
+                  price: 45,
+                  description: ` 450 g. Spiced Ground Beef, Spicy Creamy Mayo, Crispy
+                  Cold Lettuce, Toasted Sesame Seed Bun, Fresh Tomatoes,
+                  Crispy Onions`,
+                },
+              ],
+            },
+            {
+              category: "Milkshakes 🥤",
+              items: [
+                {
+                  name: "Strawberry Banana",
+                  price: 20,
+                  description: `Fresh Strawberries, Fresh Bananas, Served Ice Cold, with a side of Vanilla Wafers`,
+                },
+                {
+                  name: "Chocolate Dream",
+                  price: 20,
+                  description: `Premium Chocolate, Served Ice Cold with a side of Vanilla Wafers`,
+                },
+              ],
+            },
+            {
+              category: "Pastas 🍝",
+              items: [
+                {
+                  name: "Spaghetti and Meatballs",
+                  price: 55,
+                  description: `Steamy Hot Noodles, Served with Delicious thick meaty Tomato Sauce, Blended with a special mix of spices, Served with 3 Spicy Beef Meatballs`,
+                },
+                {
+                  name: "Chicken Alfredo",
+                  price: 60,
+                  description: `Rich and Creamy Alfredo Sauce, Spiced with a mix of special spices, served with a juicy grilled chicken breast`,
+                },
+              ],
+            },
+          ].map((item) => (
+            <div key={item.category}>
+              <div
                 style={{
-                  fontSize: "10px",
+                  display: "flex",
+                  backgroundColor: "lightgrey",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  padding: "0 24px",
                 }}
               >
-                300 g. Spiced Ground Beef, Spicy Creamy Mayo, Crispy Cold
-                Lettuce, Toasted Sesame Seed Bun, Fresh Tomatoes, Crispy Onions
-              </p>
-            </Box>
-            <Divider />
-          </Collapse>
+                <Typography variant="h5">{item.category}</Typography>
+                <div>
+                  <IconButton
+                    onClick={() => handleCollapseChange(item.category)}
+                    aria-label={item.category}
+                  >
+                    {currentCollapsed.includes(item.category) ? (
+                      <ExpandLessIcon />
+                    ) : (
+                      <ExpandMoreIcon />
+                    )}
+                  </IconButton>
+                </div>
+              </div>
+
+              <Collapse
+                in={currentCollapsed.includes(item.category)}
+                style={{
+                  padding: "0 16px",
+                }}
+              >
+                {item.items.map((foodItem) => (
+                  <div key={foodItem.name}>
+                    <Box
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <Typography variant="h5">{foodItem.name}</Typography>
+                      <Typography variant="h5">
+                        ${foodItem.price.toString()}
+                      </Typography>
+                    </Box>
+                    <Box mb={1}>
+                      <p
+                        style={{
+                          fontSize: "10px",
+                        }}
+                      >
+                        {foodItem.description}
+                      </p>
+                    </Box>
+                    <Divider />
+                  </div>
+                ))}
+              </Collapse>
+              <Divider />
+            </div>
+          ))}
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
           Offers day by day
