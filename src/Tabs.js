@@ -8,7 +8,10 @@ import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
 import FastfoodIcon from "@material-ui/icons/Fastfood";
 import TodayIcon from "@material-ui/icons/Today";
-import CallIcon from '@material-ui/icons/Call';
+import CallIcon from "@material-ui/icons/Call";
+import Collapse from "@material-ui/core/Collapse";
+import MarqueeText from "./MarqueeText";
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -82,12 +85,33 @@ export default function FullWidthTabs() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <div>
-            <h1>Welcome to Ozzy's Burgers</h1>
-            <p>
-              There is not much to say except Welcome. We will let our burgers
-              speak for themselves.
-            </p>
+          <div
+            style={{
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                marginBottom: "8px",
+              }}
+            >
+              <h1>Welcome</h1>
+            </div>
+            <div
+              style={{
+                marginBottom: "8px",
+              }}
+            >
+              <MarqueeText
+                list={[
+                  "Welcome! May we take your order?",
+                  "Try one of our new drinks: Coconut passion (Coconut + PassionFruit).",
+                  "The winner of last week's burger promo was: JUAN123. Congratulations!",
+                ].concat("Thank you for choosing Ozzy's Burgers!")}
+                variant="h3"
+                marquee={true}
+              />
+            </div>
             <div
               style={{
                 width: "350px",
@@ -106,12 +130,19 @@ export default function FullWidthTabs() {
               />
             </div>
           </div>
+          <div
+            style={{
+              backgroundColor: "pink",
+            }}
+          >
+            hello
+          </div>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-            Offers day by day
+          Offers day by day
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-            Contact information
+          Contact information
         </TabPanel>
       </SwipeableViews>
     </div>
