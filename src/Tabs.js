@@ -183,16 +183,28 @@ export default function FullWidthTabs() {
               </IconButton>
             </div>
           </div>
-          <Collapse in={currentCollapse === "burger"}>
+          <Collapse
+            in={currentCollapse === "burger"}
+            style={{
+              padding: "0 16px",
+            }}
+          >
             <Box
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                padding:"4px 16px"
               }}
             >
-              <Typography>Classic Ozz</Typography>
-              <Typography>$25</Typography>
+              <Typography variant="h5">Classic Ozz</Typography>
+              <Typography variant="h5">$25</Typography>
+            </Box>
+            <Box mb={1}>
+              <p style={{
+                fontSize:"10px"
+              }}>
+                300 g. Spiced Ground Beef, Spicy Creamy Mayo, Crispy Cold
+                Lettuce, Toasted Sesame Seed Bun, Fresh Tomatoes, Crispy Onions
+              </p>
             </Box>
             <Divider />
           </Collapse>
