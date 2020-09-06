@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 :root {
-  --main-bg-color: rgb(54, 54, 54);
+  --main-bg-color: #2d180f;
 }
 .App {
   background-color: var(--main-bg-color);
