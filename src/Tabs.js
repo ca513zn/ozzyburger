@@ -116,6 +116,20 @@ export default function FullWidthTabs() {
             >
               {"Ozzy's Burgers 🍔"}
             </h1>
+            <div
+              style={{
+                marginTop: "-4px",
+              }}
+            >
+              Est. 2020
+            </div>
+            <div
+              style={{
+                margin: "16px 0",
+              }}
+            >
+              <h3>Tel: 984 269 0027, Cancún, Mx.</h3>
+            </div>
           </header>
           <div
             style={{
