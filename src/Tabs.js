@@ -16,6 +16,8 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import IconButton from "@material-ui/core/IconButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CalendarTab from "./CalendarTab";
+import StyledButton from "./StyledButton";
+import CheckoutTab from "./CheckoutTab";
 import { Menu } from "./Menu";
 
 const themeColor1 = "white";
@@ -66,7 +68,9 @@ const useStyles = makeStyles((theme) => ({
 export default function FullWidthTabs() {
   const classes = useStyles();
   const theme = useTheme();
-  const [value, setValue] = React.useState(1);
+  const [value, setValue] = useState(0);
+
+  let [cartItems, setCartItems] = useState([]);
 
   const [currentCollapsed, setCurrentCollapsed] = useState([]);
 
@@ -84,6 +88,44 @@ export default function FullWidthTabs() {
     setValue(index);
   };
 
+  const handleAddItem = (item) => {
+    setCartItems(cartItems.concat(item));
+  };
+
+  const ShoppingCart = () => {
+    if (cartItems.length !== 0) {
+      return (
+        <div
+          style={{
+            position: "relative",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              right: -4,
+              top: -4,
+              paddingTop: "2px",
+              backgroundColor: "orangered",
+              borderRadius: "100%",
+              width: "16px",
+              height: "16px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              color: "white",
+              fontSize: "12px",
+            }}
+          >
+            {cartItems.length}
+          </div>
+          <ShoppingCartIcon style={{ fill: "white" }} />;
+        </div>
+      );
+    } else {
+      return <ShoppingCartIcon style={{ fill: "white" }} />;
+    }
+  };
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
@@ -102,10 +144,7 @@ export default function FullWidthTabs() {
             label={<TodayIcon style={{ fill: "white" }} />}
             {...a11yProps(1)}
           />
-          <Tab
-            label={<ShoppingCartIcon style={{ fill: "white" }} />}
-            {...a11yProps(2)}
-          />
+          <Tab label={<ShoppingCart />} {...a11yProps(2)} />
         </StyledTabs>
       </AppBar>
       <SwipeableViews
@@ -223,7 +262,7 @@ export default function FullWidthTabs() {
             </p>
           </div>
           {Menu.map((item, i) => (
-            <div key={i} onClick={() => handleCollapseChange(item.category)}>
+            <div key={i}>
               <div
                 style={{
                   display: "flex",
@@ -236,6 +275,7 @@ export default function FullWidthTabs() {
                   borderBottom: "2px solid white",
                   borderStyle: "none none dotted none",
                 }}
+                onClick={() => handleCollapseChange(item.category)}
               >
                 <p
                   style={{
@@ -280,6 +320,8 @@ export default function FullWidthTabs() {
                         key={`menu-${foodItem}`}
                         style={{
                           width: "100%",
+                          display: "flex",
+                          flexDirection: "column",
                           margin: "0 8px",
                         }}
                       >
@@ -303,6 +345,15 @@ export default function FullWidthTabs() {
                             {foodItem.description}
                           </p>
                         </Box>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "row-reverse",
+                          }}
+                          onClick={() => handleAddItem(item)}
+                        >
+                          <StyledButton />
+                        </div>
                       </div>
                     </div>
                     <Divider />
@@ -317,7 +368,7 @@ export default function FullWidthTabs() {
           <CalendarTab />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          Contact information
+          <CheckoutTab cart={cartItems} />
         </TabPanel>
       </SwipeableViews>
     </div>
