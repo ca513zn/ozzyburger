@@ -271,6 +271,25 @@ export default function FullWidthTabs() {
                 },
               ],
             },
+            {
+              category: "Sides 🍟",
+              items: [
+                {
+                  name: "Red Potato Salad For 1",
+                  image:
+                    "https://www.skinnytaste.com/wp-content/uploads/2009/06/red-potato-salad.jpg",
+                  price: 20,
+                  description: `Delicious Steamed Red Potatoes, Mixed with Fresh Dill, Served With Fresh Cold Cream`,
+                },
+                {
+                  name: "Red Potato Salad for 3",
+                  image:
+                    "https://www.vidarecipes.com/wp-content/uploads/2017/05/Red-Hot-Blues-Potato-Salad.jpg",
+                  price: 50,
+                  description: `Delicious Steamed Red Potatoes, Mixed with Fresh Dill, Served With Fresh Cold Cream`,
+                },
+              ],
+            },
           ].map((item) => (
             <div
               key={item.category}
@@ -341,8 +360,8 @@ export default function FullWidthTabs() {
                             justifyContent: "space-between",
                           }}
                         >
-                          <Typography variant="h5">{foodItem.name}</Typography>
-                          <Typography variant="h5">
+                          <Typography variant="h6">{foodItem.name}</Typography>
+                          <Typography variant="h6">
                             ${foodItem.price.toString()}
                           </Typography>
                         </Box>
