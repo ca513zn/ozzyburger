@@ -4,12 +4,15 @@ import SwipeableViews from "react-swipeable-views";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
+import Typography from "@material-ui/core/Typography";
 import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
 import FastfoodIcon from "@material-ui/icons/Fastfood";
 import TodayIcon from "@material-ui/icons/Today";
 import CallIcon from "@material-ui/icons/Call";
 import Collapse from "@material-ui/core/Collapse";
+import Divider from "@material-ui/core/Divider";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import IconButton from "@material-ui/core/IconButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
@@ -61,6 +64,12 @@ export default function FullWidthTabs() {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const handleCollapseChange = (tab) => {
+    tab === currentCollapse
+      ? setCurrentCollapse(null)
+      : setCurrentCollapse(tab);
   };
 
   const handleChangeIndex = (index) => {
@@ -154,7 +163,7 @@ export default function FullWidthTabs() {
           <div
             style={{
               display: "flex",
-              backgroundColor: "pink",
+              backgroundColor: "lightgrey",
               justifyContent: "space-between",
               alignItems: "center",
               padding: "0 24px",
@@ -162,11 +171,31 @@ export default function FullWidthTabs() {
           >
             <div>Burgers</div>
             <div>
-              <IconButton aria-label="burgers">
-                <ExpandMoreIcon />
+              <IconButton
+                onClick={() => handleCollapseChange("burger")}
+                aria-label="burgers"
+              >
+                {currentCollapse === "burger" ? (
+                  <ExpandLessIcon />
+                ) : (
+                  <ExpandMoreIcon />
+                )}
               </IconButton>
             </div>
           </div>
+          <Collapse in={currentCollapse === "burger"}>
+            <Box
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                padding:"4px 16px"
+              }}
+            >
+              <Typography>Classic Ozz</Typography>
+              <Typography>$25</Typography>
+            </Box>
+            <Divider />
+          </Collapse>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
           Offers day by day
