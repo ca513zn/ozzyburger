@@ -171,6 +171,7 @@ export default function FullWidthTabs() {
                 }
                 style={{
                   width: "100%",
+                  borderRadius: "100%",
                 }}
               />
             </div>
@@ -248,7 +249,10 @@ export default function FullWidthTabs() {
               ],
             },
           ].map((item) => (
-            <div key={item.category}>
+            <div
+              key={item.category}
+              onClick={() => handleCollapseChange(item.category)}
+            >
               <div
                 style={{
                   display: "flex",
@@ -256,14 +260,12 @@ export default function FullWidthTabs() {
                   justifyContent: "space-between",
                   alignItems: "center",
                   padding: "0 24px",
+                  cursor: "pointer",
                 }}
               >
                 <Typography variant="h5">{item.category}</Typography>
                 <div>
-                  <IconButton
-                    onClick={() => handleCollapseChange(item.category)}
-                    aria-label={item.category}
-                  >
+                  <IconButton aria-label={item.category}>
                     {currentCollapsed.includes(item.category) ? (
                       <ExpandLessIcon />
                     ) : (
@@ -295,6 +297,7 @@ export default function FullWidthTabs() {
                       <div
                         key={foodItem.name}
                         style={{
+                          width: "100%",
                           margin: "0 8px",
                         }}
                       >
