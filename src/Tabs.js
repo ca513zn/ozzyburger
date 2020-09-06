@@ -68,11 +68,11 @@ export default function FullWidthTabs() {
         <Tabs
           value={value}
           onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
+          indicatorColor="secondary"
+          textColor="secondary"
           scrollButtons="auto"
           variant="fullWidth"
-          aria-label="full width tabs example"
+          aria-label="Ozzy's menu"
         >
           <Tab label={<FastfoodIcon />} {...a11yProps(0)} />
           <Tab label={<TodayIcon />} {...a11yProps(1)} />
@@ -85,6 +85,23 @@ export default function FullWidthTabs() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
+          <header
+            style={{
+              backgroundColor: "white",
+              width: "100%",
+              textAlign: "center",
+            }}
+          >
+            <h1
+              style={{
+                fontFamily: "'Fredoka One', cursive",
+                letterSpacing: "4px",
+                color: "red",
+              }}
+            >
+              {"Ozzy's Burgers 🍔"}
+            </h1>
+          </header>
           <div
             style={{
               textAlign: "center",
@@ -92,23 +109,16 @@ export default function FullWidthTabs() {
           >
             <div
               style={{
-                marginBottom: "8px",
-              }}
-            >
-              <h1>Welcome</h1>
-            </div>
-            <div
-              style={{
-                marginBottom: "8px",
+                margin: "8px 0",
               }}
             >
               <MarqueeText
                 list={[
                   "Welcome! May we take your order?",
-                  "Try one of our new drinks: Coconut passion (Coconut + PassionFruit).",
+                  "Try one of our new drinks: Coconut passion. (Coconut + PassionFruit)",
                   "The winner of last week's burger promo was: JUAN123. Congratulations!",
                 ].concat("Thank you for choosing Ozzy's Burgers!")}
-                variant="h3"
+                variant="h5"
                 marquee={true}
               />
             </div>
@@ -117,6 +127,7 @@ export default function FullWidthTabs() {
                 width: "350px",
                 borderRadius: "20px",
                 overflow: "hidden",
+                textAlign: "center",
               }}
             >
               <img
@@ -132,10 +143,14 @@ export default function FullWidthTabs() {
           </div>
           <div
             style={{
+              display: "flex",
               backgroundColor: "pink",
+              justifyContent: "space-between",
+              padding: "0 24px",
             }}
           >
-            hello
+            <div>Burgers</div>
+            <div>Button</div>
           </div>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
