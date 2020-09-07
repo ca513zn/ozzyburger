@@ -7,7 +7,7 @@ const CheckoutTab = ({ cart }) => {
       <div
         style={{
           color: "white",
-          margin: "8px 0",
+          margin: "72px 0 8px 0 ",
           display: "flex",
           justifyContent: "center",
           flexDirection: "column",

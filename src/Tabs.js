@@ -119,7 +119,7 @@ export default function FullWidthTabs() {
           >
             {cartItems.length}
           </div>
-          <ShoppingCartIcon style={{ fill: "white" }} />;
+          <ShoppingCartIcon style={{ fill: "white" }} />
         </div>
       );
     } else {
