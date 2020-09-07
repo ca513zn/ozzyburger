@@ -1,7 +1,8 @@
-import React from "react";
-import Divider from "@material-ui/core/Divider";
-
-const CheckoutTab = ({ cart }) => {
+import React, { useState, useEffect } from "react";
+import IconButton from "@material-ui/core/IconButton";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+const CheckoutTab = ({ cart, removeItem }) => {
+  
   return (
     <>
       <div
@@ -54,7 +55,8 @@ const CheckoutTab = ({ cart }) => {
           <div
             key={item + "-" + i}
             style={{
-              margin: "8px 0",
+              display: "flex",
+              alignItems: "center",
             }}
           >
             <div
@@ -62,11 +64,34 @@ const CheckoutTab = ({ cart }) => {
                 display: "flex",
                 justifyContent: "space-between",
                 color: "white",
-                padding: "0 64px 0 32px",
+                padding: "0 0 0 32px",
+                width: "100%",
+                alignItems: "center",
+                height: "30px",
               }}
             >
-              <p>{item.name}</p>
-              <p>$ {item.price}</p>
+              <p
+                style={{
+                  fontSize: "16px",
+                }}
+              >
+                {item.name}
+              </p>
+              <div
+                style={{
+                  fontSize: "12px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <p>$ {item.price}</p>
+                <IconButton
+                  aria-label="delete_item"
+                  onClick={() => removeItem(item.uuid)}
+                >
+                  <HighlightOffIcon style={{ fill: "white", padding: "4px" }} />
+                </IconButton>
+              </div>
             </div>
           </div>
         ))

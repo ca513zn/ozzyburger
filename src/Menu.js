@@ -64,6 +64,12 @@ export const Menu = [
     category: "Sides 🍟",
     items: [
       {
+        name: "5 Jalapeño Poppers",
+        image: require("./images/j_poppers.png"),
+        price: 55,
+        description: `Roasted Jalapeños stuffed with melted mozzarrella and wrapped around crispy seasoned bacon`,
+      },
+      {
         name: "Red Potato Salad For 1",
         image:
           "https://www.skinnytaste.com/wp-content/uploads/2009/06/red-potato-salad.jpg",

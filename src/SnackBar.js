@@ -9,7 +9,7 @@ function Alert(props) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    position: "fixed",
+    position: "absolute",
     top: 0,
     width: "100%",
     "& > * + *": {
@@ -36,7 +36,8 @@ export default function CustomizedSnackbars() {
 
   return (
     <>
-      <div onClick={handleClick}>
+      <div onClick={handleClick}
+      >
         <StyledButton />
       </div>
       <div className={classes.root}>

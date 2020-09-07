@@ -68,9 +68,14 @@ const useStyles = makeStyles((theme) => ({
 export default function FullWidthTabs() {
   const classes = useStyles();
   const theme = useTheme();
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(2);
+  const [uuid, setUuid] = useState(0);
 
   let [cartItems, setCartItems] = useState([]);
+
+  const removeItem = (uuid) => {
+    setCartItems(cartItems.filter((i) => i.uuid !== uuid));
+  };
 
   const [currentCollapsed, setCurrentCollapsed] = useState([]);
 
@@ -89,7 +94,15 @@ export default function FullWidthTabs() {
   };
 
   const handleAddItem = (item) => {
-    setCartItems(cartItems.concat(item));
+    item.uuid = uuid;
+    setCartItems(
+      cartItems.concat({
+        name: item.name,
+        price: item.price,
+        uuid: item.uuid,
+      })
+    );
+    setUuid(uuid + 1);
   };
 
   const ShoppingCart = () => {
@@ -375,7 +388,7 @@ export default function FullWidthTabs() {
           <CalendarTab />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          <CheckoutTab cart={cartItems} />
+          <CheckoutTab cart={cartItems} removeItem={removeItem} />
         </TabPanel>
       </SwipeableViews>
     </div>

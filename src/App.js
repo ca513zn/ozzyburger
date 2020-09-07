@@ -24,18 +24,6 @@ function App() {
           >
             Thank you for choosing <br /> Ozzy's Burgers 🍔
           </h3>
-          <a
-            href="https://www.carlosznava.com"
-            style={{
-              fontSize: "6px",
-              color: "white",
-              fontFamily: "Arial",
-              marginTop: "10px",
-              textDecoration: "none",
-            }}
-          >
-            Created by Carlos Zuniga.
-          </a>
         </div>
       </footer>
     </div>
