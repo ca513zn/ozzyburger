@@ -16,7 +16,7 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import IconButton from "@material-ui/core/IconButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CalendarTab from "./CalendarTab";
-import StyledButton from "./StyledButton";
+import SnackBar from "./SnackBar";
 import CheckoutTab from "./CheckoutTab";
 import { Menu } from "./Menu";
 
@@ -128,7 +128,14 @@ export default function FullWidthTabs() {
   };
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar
+        position="static"
+        color="default"
+        style={{
+          position: "fixed",
+          top: 0,
+        }}
+      >
         <StyledTabs
           value={value}
           onChange={handleChange}
@@ -158,7 +165,7 @@ export default function FullWidthTabs() {
               color: "white",
               width: "100%",
               textAlign: "center",
-              marginTop: "16px",
+              marginTop: "64px",
             }}
           >
             <h1
@@ -352,7 +359,7 @@ export default function FullWidthTabs() {
                           }}
                           onClick={() => handleAddItem(foodItem)}
                         >
-                          <StyledButton />
+                          <SnackBar />
                         </div>
                       </div>
                     </div>

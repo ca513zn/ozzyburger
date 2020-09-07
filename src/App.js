@@ -4,6 +4,7 @@ import "fontsource-roboto";
 import TabPanel from "./Tabs";
 
 function App() {
+  console.log(process.env.REACT_APP_HELLO_WORLD);
   return (
     <div className="App">
       <TabPanel />
@@ -15,7 +16,13 @@ function App() {
             textAlign: "center",
           }}
         >
-          <h3 style={{ color: "white", fontFamily: "'Fredoka One', cursive", letterSpacing: "2px" }}>
+          <h3
+            style={{
+              color: "white",
+              fontFamily: "'Fredoka One', cursive",
+              letterSpacing: "2px",
+            }}
+          >
             Thank you for choosing <br /> Ozzy's Burgers 🍔
           </h3>
           <a
@@ -25,7 +32,7 @@ function App() {
               color: "white",
               fontFamily: "Arial",
               marginTop: "10px",
-              textDecoration: "none"
+              textDecoration: "none",
             }}
           >
             Created by Carlos Zuniga.
