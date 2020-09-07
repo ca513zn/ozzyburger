@@ -4,7 +4,6 @@ import "fontsource-roboto";
 import TabPanel from "./Tabs";
 
 function App() {
-  console.log(process.env.REACT_APP_HELLO_WORLD);
   return (
     <div className="App">
       <TabPanel />
